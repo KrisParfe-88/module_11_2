@@ -3,8 +3,8 @@ from pprint import pprint
 
 def introspection_info(obj):
     type_ = type(obj).__name__
-    attr = dir(obj)
-    methods = [attr for attr in dir(obj) if callable(getattr(obj, attr))]
+    attr = [x for x in dir(obj) if not callable(getattr(obj, x))]
+    methods = [y for y in dir(obj) if callable(getattr(obj, y))]
     module = type(obj).__module__
     dict_intro = {
         'type': type_,
